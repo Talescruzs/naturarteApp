@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="primaria">#34DB1A</color>
+    <color name="secundaria">#3AF51D</color>
+    <color name="terciaria">#0D3606</color>
+    <color name="quaternaria">#1C750E</color>
+    <color name="quita">#2BB516</color>
 </resources>
