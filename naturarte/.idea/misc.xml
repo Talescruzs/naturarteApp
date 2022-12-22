@@ -3,7 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/tcs20/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/app_bar_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/fragment_gallery.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/fragment_jardineiros.xml" value="0.1" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/fragment_slideshow.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/jardineiros.xml" value="0.1" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/layout/nav_header_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/tcs20/Repositorios/naturarteApp/naturarte/app/src/main/res/menu/main.xml" value="0.1" />
       </map>
     </option>
   </component>

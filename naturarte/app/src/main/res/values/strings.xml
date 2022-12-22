@@ -10,4 +10,12 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="campo1">Nome:</string>
+    <string name="campo2">Especialidade:</string>
+    <string name="campo3">Salario:</string>
+    <string name="confirma">Inserir:</string>
+
+    <string name="salvo">Item salvo</string>
+    <string name="embranco">precisa inserir em todos os campos</string>
 </resources>
