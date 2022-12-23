@@ -9,7 +9,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista"
         android:layout_width="match_parent"
-        tools:listitem="@android:layout/simple_list_item_1"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.naturarte.R;
 import com.example.naturarte.Registro;
 import com.example.naturarte.databinding.FragmentHomeBinding;
 import com.example.naturarte.sqlHelper;
@@ -39,6 +42,7 @@ public class HomeFragment extends Fragment {
         ListaValores adapter = new ListaValores(registros);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
 
         return root;
     }
@@ -53,7 +57,7 @@ public class HomeFragment extends Fragment {
         @NonNull
         @Override
         public ListaValoresViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType ){
-            return new ListaValoresViewHolder(getLayoutInflater().inflate(android.R.layout.simple_list_item_1,parent,false));
+            return new ListaValoresViewHolder(getLayoutInflater().inflate(R.layout.registro,parent,false));
         }
 
         @Override
@@ -70,7 +74,26 @@ public class HomeFragment extends Fragment {
                 super(itemView);
             }
             public void bind(Registro dado){
-                ((TextView) itemView).setText("Função: "+dado.tipo+"\nNome: "+dado.nome+"\nEspecialidade: "+dado.especialidade+"\nSalario: "+String.valueOf(dado.salario));
+
+                TextView tipoItem = itemView.findViewById(R.id.tipo);
+                TextView nomeItem = itemView.findViewById(R.id.nome);
+                TextView especialidadeItem = itemView.findViewById(R.id.especialidade);
+                TextView salarioItem = itemView.findViewById(R.id.salario);
+                Button bt = itemView.findViewById(R.id.remove);
+
+                tipoItem.setText("Função: "+dado.tipo);
+                nomeItem.setText("Nome: "+dado.nome);
+                especialidadeItem.setText("Especialidade: "+dado.especialidade);
+                salarioItem.setText("Salario: "+String.valueOf(dado.salario));
+
+                bt.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        sqlHelper.getInstance(getActivity()).removeRegistro(dado.tipo, dado.nome, dado.especialidade, dado.salario);
+                        recyclerView.removeViewInLayout(itemView);
+                        Toast.makeText(getContext(), "Registro Excluido", Toast.LENGTH_LONG).show();
+                    }
+                });
 
             }
         }

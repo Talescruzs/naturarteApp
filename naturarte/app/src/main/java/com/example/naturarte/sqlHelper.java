@@ -50,7 +50,7 @@ public class sqlHelper extends SQLiteOpenHelper {
             cursor = db.rawQuery("Select * from registros",null);
         }
         else{
-            cursor = db.rawQuery("Select * from agenda where disciplina = ?",new String[]{valor});
+            cursor = db.rawQuery("Select * from registros where disciplina = ?",new String[]{valor});
         }
         try{
             if(cursor.moveToFirst()){
@@ -92,6 +92,16 @@ public class sqlHelper extends SQLiteOpenHelper {
         }
         return id_table;
 
+    }
+
+    public void removeRegistro(String tipo, String nome, String especialidade, Float salario){
+        SQLiteDatabase db = getWritableDatabase();
+
+        try{
+            db.execSQL("delete from registros where tipo = ? and nome = ? and especialidade = ? and salario = ?",new String[]{tipo, nome, especialidade, String.valueOf(salario)});
+        } catch (Exception e){
+            Log.e("sqllite",e.getMessage(),e);
+        }
     }
 
 }
