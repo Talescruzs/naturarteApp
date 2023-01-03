@@ -12,6 +12,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="tipo"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="nome"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tipo"
         app:layout_constraintEnd_toStartOf="@+id/remove"
         app:layout_constraintStart_toEndOf="@+id/tipo"
@@ -31,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="especialidade"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/nome"
         app:layout_constraintStart_toStartOf="@+id/tipo"
         app:layout_constraintTop_toBottomOf="@+id/tipo" />
@@ -42,6 +45,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="salario"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/especialidade"
         app:layout_constraintStart_toStartOf="@+id/especialidade"
@@ -53,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="EXCLUIR"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/salario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tipo" />

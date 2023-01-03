@@ -32,7 +32,7 @@ public class sqlHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(
-                "CREATE TABLE registros (id INTEGER primary key autoincrement, tipo TEXT not null, nome TEXT not null, especialidade TEXT, salario FLOAT)"
+                "- TABLE registros (id INTEGER primary key autoincrement, tipo TEXT not null, nome TEXT not null, especialidade TEXT, salario FLOAT)"
         );
     }
     @Override
