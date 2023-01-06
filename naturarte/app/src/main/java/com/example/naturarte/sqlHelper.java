@@ -15,10 +15,12 @@ import java.util.List;
 
 public class sqlHelper extends SQLiteOpenHelper {
 
-    private static final String db_Name = "registros.db";
+    private static final String db_Name = "funcionarios.db";
     private static final int db_Version = 1;
 
     private static sqlHelper instance;
+
+    private SQLiteDatabase escreve = getWritableDatabase();
 
     public static sqlHelper getInstance(Context context){
         if (instance==null)
@@ -32,7 +34,7 @@ public class sqlHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(
-                "- TABLE registros (id INTEGER primary key autoincrement, tipo TEXT not null, nome TEXT not null, especialidade TEXT, salario FLOAT)"
+                "CREATE TABLE IF NOT EXISTS registros (id INTEGER primary key autoincrement, tipo TEXT not null, nome TEXT not null, especialidade TEXT, salario FLOAT)"
         );
     }
     @Override
@@ -73,35 +75,49 @@ public class sqlHelper extends SQLiteOpenHelper {
     }
 
     public long addRegistro(String tipo, String nome, String especialidade, Float salario){
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         long id_table = 0;
         try{
-          sqLiteDatabase.beginTransaction();
+          escreve.beginTransaction();
             ContentValues valores = new ContentValues();
             valores.put("tipo", tipo);
             valores.put("nome",nome);
             valores.put("especialidade",especialidade);
             valores.put("salario",salario);
-            id_table = sqLiteDatabase.insertOrThrow("registros",null,valores);
-            sqLiteDatabase.setTransactionSuccessful();
+            id_table = escreve.insertOrThrow("registros",null,valores);
+            escreve.setTransactionSuccessful();
         } catch (Exception e){
             Log.e("sqllite",e.getMessage(),e);
 
         } finally {
-            sqLiteDatabase.endTransaction();
+            escreve.endTransaction();
         }
         return id_table;
 
     }
 
-    public void removeRegistro(String tipo, String nome, String especialidade, Float salario){
-        SQLiteDatabase db = getWritableDatabase();
+//    public void deleteTitle(String tipo, String nome, String especialidade, Float salario)
+//    {
+//        Log.d("chegou", tipo+nome+especialidade+String.valueOf(salario));
+//        escreve.beginTransaction();
+//        try{
+//            escreve.delete("registros", "tipo = ? and nome = ? and especialidade = ? and salario = ?", new String[]{tipo, nome, especialidade, String.valueOf(salario)});
+//        }catch (Exception e){
+//            Log.e("sqllite",e.getMessage(),e);
+//
+//        } finally {
+//            escreve.endTransaction();
+//        }
+//    }
 
-        try{
-            db.execSQL("delete from registros where tipo = ? and nome = ? and especialidade = ? and salario = ?",new String[]{tipo, nome, especialidade, String.valueOf(salario)});
-        } catch (Exception e){
-            Log.e("sqllite",e.getMessage(),e);
+    public void removeRegistro(String tipo, String nome, String especialidade, Float salario) {
+        try {
+            escreve.beginTransaction();
+            escreve.execSQL("delete from registros where tipo = ? and nome = ? and especialidade = ? and salario = ?", new String[]{tipo, nome, especialidade, String.valueOf(salario)});
+            escreve.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.e("sqllite", e.getMessage(), e);
+        } finally {
+        escreve.endTransaction();
         }
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.naturarte.ui.home;
 
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,17 +28,19 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private RecyclerView recyclerView;
     private String valor;
+    private sqlHelper banco;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        banco = sqlHelper.getInstance(getActivity());
 
         recyclerView = binding.lista;
 
 //         caso queira criar uma pesquisa por registro, dá. mas não tem
         valor = "";
-
-        List<Registro> registros = sqlHelper.getInstance(getActivity()).getRegistro(valor);
+        List<Registro> registros = banco.getRegistro(valor);
 //        Log.d("teste", registros.toString());
         ListaValores adapter = new ListaValores(registros);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -89,7 +92,7 @@ public class HomeFragment extends Fragment {
                 bt.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
-                        sqlHelper.getInstance(getActivity()).removeRegistro(dado.tipo, dado.nome, dado.especialidade, dado.salario);
+                        banco.removeRegistro(dado.tipo, dado.nome, dado.especialidade, dado.salario);
                         recyclerView.removeViewInLayout(itemView);
                         Toast.makeText(getContext(), "Registro Excluido", Toast.LENGTH_LONG).show();
                     }
